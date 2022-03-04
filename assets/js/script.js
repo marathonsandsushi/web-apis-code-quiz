@@ -45,7 +45,15 @@ resetDom = function() {
 askQuestions = function() {
     console.log("TBD 2");
     for(i=0; i< questions.length; i++){
-        console.log("Questions" + questions[i].question);
+        const currentQuestion = questions[i];
+        console.log("Questions" + currentQuestion.question); // make questions show up in DOM
+        for(j=0; j< currentQuestion.choices.length; j++) {
+            console.log("Choice" + currentQuestion.choices[j]);
+        }
     }
+    console.log("-------------------------------------");
 }
+
+
+
 // Madison Kendall Coding Quiz

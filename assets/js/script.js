@@ -29,8 +29,9 @@ let questions = [
 ]
 
 var startTime = document.getElementById("#startTime");
+var questionsDiv = document.getElementById("questionsDiv");
 
-// start game function 
+// start quiz function 
 startQuiz = function (){
     console.log("I work");
     resetDom();
@@ -38,21 +39,31 @@ startQuiz = function (){
 
 }
 
+// reset the dom function. Will run after start quiz button is hit (startQuiz function runs)
 resetDom = function() {
     console.log("TBD");
+    questionsDiv.innerHTML = "";
+    askQuestions();
+
 }
 
+// quiz questions function
 askQuestions = function() {
     console.log("TBD 2");
     for(i=0; i< questions.length; i++){
         const currentQuestion = questions[i];
-        console.log("Questions" + currentQuestion.question); // make questions show up in DOM
+        console.log("Questions" + currentQuestion.question);
+         //To Do: make questions show up in html
         for(j=0; j< currentQuestion.choices.length; j++) {
             console.log("Choice" + currentQuestion.choices[j]);
+             //To Do: make choices show up in html
         }
     }
     console.log("-------------------------------------");
 }
+
+// TODO: create startTimer function
+// TODO: create updateTimer function
 
 
 

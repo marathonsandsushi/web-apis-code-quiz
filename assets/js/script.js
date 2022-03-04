@@ -1,130 +1,51 @@
-const quizContainer = document.getElementById('quiz');
-const resultsContainer = document.getElementById('results');
-const submitButton = document.getElementById('submit');
-const startingMinutes = 1;
-let time = startingMinutes * 60;
+// Hi! Welcome to my Web APIs Challenge: Code Quiz
 
-const countdownEl = countdown.getElementById('countdown');
-
-setInterval(updateCountdown, 1000);
-
-function updateCountdown() {
-    const minutes = Math.floor(time / 60);
-    let seconds = time % 60;
-
-    seconds = seconds
-
-    countdown.innerHTML = '${minutes}: ${seconds}';
-    time --;
-}
-
-/*
-const myQuestions = [
-    {
-        question: "Commonly used data types DO not Include:",
-        answers: {
-            a: "strings",
-            b: "booleans",
-            c: "alerts",
-            d: "numbers"
-        },
-        correctAnswer: "c"
-    },
-    {
-        question: "The condition in an if / else statement is enclosed with ___",
-        answers: {
-            a: "quotes",
-            b: "curly brackets",
-            c: "parenthesis",
-            d: "square brackets"
-        },
-        correctAnswer: "b"
-    },
-    {
-        question: "Arrays in JavaScript can be used to store",
-        answers: {
-            a: "numbers and strings",
-            b: "other arrays",
-            c: "booleans",
-            d: "all of the above"
-        },
-        correctAnswer: "d"
-    },
-    {
-        question: "String values must be enclosed within ___ when being assigned to variables.",
-        answers: {
-            a: "commmas",
-            b: "curly brackets",
-            c: "quotes",
-            d: "parenthesis"
-        },
-        correctAnswer: "c"
-    },
-    {
-        question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        answers: {
-            a: "JavaScript",
-            b: "terminal/bash",
-            c: "for loops",
-            d: "console log"
-        },
-        correctAnswer: "d"
-    },
-
+let questions = [
+   {
+       question: "Commonly used data types DO not Include:",
+       choices:["strings", "booleans", "alerts", "numbers"],
+       answer: "alerts"
+   },
+   {
+       question: "The condition in an if / else statement is enclosed within  ____.",
+       choices: ["quotes", "curly brackets", "parenthesis", "square brackets"],
+       answer: "curly brackets"
+   },
+   {
+       question: "Arrays in JavaScript can be used to store ____.",
+       choices: ["numbers and strings", "other arrays", "booleans", "all of the above"],
+       answer: "all of the above"
+   },
+   {
+       question: "String values must be enclosed within ____ when being assigned to variables.",
+       choices: ["commmas", "curly brackets", "quotes", "parenthesis"],
+       answer: "quotes"
+   },
+   {
+       question: "A very useful tool used during development and debugging for printing content to the debugger is:",
+       choices: ["JavaScript", "terminal/bash", "for loops", "console log"],
+       answer: "console log"
+   }
 ]
 
-const timerEl = document.querySelector("#timer");
+var startTime = document.getElementById("#startTime");
 
-
-
-
-
-function buildQuiz(){
- // variable to store the HTML output
- const output = [];
-
- // for each question
- myQuestions.forEach(
-     (currentQuestion, questionNumber) => {
-         
-        // variable to store the list of possible answers 
-        const answers = [];
-
-        // and for each available answer 
-        for(letter in currentQuestion.answers){
-
-            // add an HTML radio button
-            answers.push(
-                `<label>
-                <input type="radio" name="question${questionNumber}" value="${letter}">
-                ${letter} :
-                ${currentQuestion.answers[letter]}
-              </label>`
-            );
-          }
-    
-          // add this question and its answers to the output
-          output.push(
-            `<div class="question"> ${currentQuestion.question} </div>
-            <div class="answers"> ${answers.join('')} </div>`
-          );
-        }
-      );
-    
-      // finally combine our output list into one string of HTML and put it on the page
-      quizContainer.innerHTML = output.join('');
-    }
-
-
-
-
-function showResults(){
+// start game function 
+startQuiz = function (){
+    console.log("I work");
+    resetDom();
+    askQuestions();
 
 }
 
-// display quiz right away
-buildQuiz();
+resetDom = function() {
+    console.log("TBD");
+}
 
-// on submit, show results
-submitButton.addEventListener('click', showResults); 
-*/
+askQuestions = function() {
+    console.log("TBD 2");
+    for(i=0; i< questions.length; i++){
+        console.log("Questions" + questions[i].question);
+    }
+}
+// Madison Kendall Coding Quiz

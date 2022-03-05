@@ -73,9 +73,13 @@ checkAnswer = function(button) {
         console.log("correct answer");
     } else {
         console.log("wrong");
+    } 
+    currentQuestionId++;
+    if(currentQuestionId >= questions.length){
+        endQuiz();
+    } else {
+        askNextQuestion();
     }
-    // TODO check is there another question. And if not- then end quiz
-    // else increment to nextQuestion
 }
 
 askNextQuestion = function () {
@@ -90,6 +94,25 @@ askNextQuestion = function () {
       cContent.innerHTML = currentQuestion.choices[j];
     }
 }
+
+endQuiz = function (){
+    console.log("TBD");
+    questionsDiv.innerHTML = "";
+    
+     const createH2 = document.createElement("h2");
+     createH2.setAttribute("id", "createH2");
+     createH2.textContent = "All Done!"
+ 
+     questionsDiv.appendChild(createH2);
+
+     const scoreText = document.createElement("h2");
+     scoreText.setAttribute("id", "scoreText");
+     scoreText.textContent = "Your Score is-";
+ 
+     questionsDiv.appendChild(scoreText);
+ 
+}
+
 
 /*
 waitForChoice = function (currentQuestion) {

@@ -39,16 +39,20 @@ let questions = [
 
 currentQuestionId = 0;
 let secondsRemaining = 60;
+let quizInterval = null;
 
 // start quiz function
 startQuiz = function () {
   console.log("I work");
-  setInterval(updateTime, 1000);
+  quizInterval = setInterval(updateTime, 1000);
   askNextQuestion();
 };
 
 // this function will run every second
 function updateTime() {
+    if(secondsRemaining <= 0) {
+        endQuiz();
+    }
     secondsRemaining--;
     console.log("timer is working" + secondsRemaining);
     let timerEl = document.getElementById("timer-value");
@@ -66,6 +70,7 @@ checkAnswer = function(button) {
     } else {
         console.log("wrong");
         secondsRemaining -= 10;
+        updateTime();
     } 
     currentQuestionId++;
     if(currentQuestionId >= questions.length || secondsRemaining <= 0){
@@ -89,6 +94,7 @@ askNextQuestion = function () {
 }
 
 endQuiz = function (){
+    clearInterval(quizInterval);
     console.log("TBD");
     questionsDiv.innerHTML = "";
     

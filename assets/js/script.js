@@ -67,6 +67,13 @@ checkAnswer = function(button) {
     // TODO check current answer
     const clickChoice = button.innerHTML;
     console.log("clickChoice" + clickChoice);
+    const currentQuestion = questions[currentQuestionId];
+    const answer = questions[currentQuestionId].answer;
+    if(clickChoice === answer) {
+        console.log("correct answer");
+    } else {
+        console.log("wrong");
+    }
     // TODO check is there another question. And if not- then end quiz
     // else increment to nextQuestion
 }

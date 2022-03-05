@@ -38,31 +38,23 @@ let questions = [
 ];
 
 currentQuestionId = 0;
+let secondsRemaining = 60;
 
 // start quiz function
 startQuiz = function () {
   console.log("I work");
+  setInterval(updateTime, 1000);
   askNextQuestion();
 };
 
-// quiz questions function
-askQuestions = function () {
-  console.log("TBD 2");
-  for (i = 0; i < questions.length; i++) {
-    const currentQuestion = questions[i];
-    console.log("Questions" + currentQuestion.question);
-    let qContent = document.getElementById("question-content");
-    qContent.innerHTML = currentQuestion.question;
-    for (j = 0; j < currentQuestion.choices.length; j++) {
-      console.log("Choice" + currentQuestion.choices[j]);
-      const elementName = "choice-" + j;
-      let cContent = document.getElementById(elementName);
-      cContent.innerHTML = currentQuestion.choices[j];
-    }
-  }
-  console.log("-------------------------------------");
-};
-
+// this function will run every second
+function updateTime() {
+    secondsRemaining--;
+    console.log("timer is working" + secondsRemaining);
+    let timerEl = document.getElementById("timer-value");
+    timerEl.innerHTML = "Time remaining:  " + secondsRemaining;
+ }
+ 
 checkAnswer = function(button) {
     // TODO check current answer
     const clickChoice = button.innerHTML;
@@ -73,9 +65,10 @@ checkAnswer = function(button) {
         console.log("correct answer");
     } else {
         console.log("wrong");
+        secondsRemaining -= 10;
     } 
     currentQuestionId++;
-    if(currentQuestionId >= questions.length){
+    if(currentQuestionId >= questions.length || secondsRemaining <= 0){
         endQuiz();
     } else {
         askNextQuestion();
@@ -122,6 +115,25 @@ waitForChoice = function (currentQuestion) {
 };
 */
 
+// quiz questions function
+/*
+askQuestions = function () {
+    console.log("TBD 2");
+    for (i = 0; i < questions.length; i++) {
+      const currentQuestion = questions[i];
+      console.log("Questions" + currentQuestion.question);
+      let qContent = document.getElementById("question-content");
+      qContent.innerHTML = currentQuestion.question;
+      for (j = 0; j < currentQuestion.choices.length; j++) {
+        console.log("Choice" + currentQuestion.choices[j]);
+        const elementName = "choice-" + j;
+        let cContent = document.getElementById(elementName);
+        cContent.innerHTML = currentQuestion.choices[j];
+      }
+    }
+    console.log("-------------------------------------");
+  };
+*/
 
 // TODO: create startTimer function
 // TODO: create updateTimer function

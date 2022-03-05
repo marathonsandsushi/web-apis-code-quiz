@@ -1,5 +1,6 @@
 // Hi! Welcome to my Web APIs Challenge: Code Quiz
 
+// array of objects
 let questions = [
    {
        question: "Commonly used data types DO not Include:",
@@ -28,22 +29,10 @@ let questions = [
    }
 ]
 
-// button id is startButton
-var startButton = document.getElementById("#startButton");
-var questionsDiv = document.getElementById("questionsDiv");
 
 // start quiz function 
 startQuiz = function (){
     console.log("I work");
-    resetDom();
-    askQuestions();
-
-}
-
-// reset the dom function. Will run after start quiz button is hit (startQuiz function runs)
-resetDom = function() {
-    console.log("TBD");
-    questionsDiv.innerHTML = "";
     askQuestions();
 
 }
@@ -55,6 +44,8 @@ askQuestions = function() {
         const currentQuestion = questions[i];
         console.log("Questions" + currentQuestion.question)
          //To Do: make questions show up in html
+         let qcontent = document.getElementById('question-content');
+         qcontent.innerHTML=currentQuestion.question;
         for(j=0; j< currentQuestion.choices.length; j++) {
             console.log("Choice" + currentQuestion.choices[j]);
              //To Do: make choices show up in html

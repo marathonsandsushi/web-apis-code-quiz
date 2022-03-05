@@ -74,6 +74,11 @@ a.quizBtn {
   color: initial;
 }
 
+#question-title {
+  font-size: 40px;
+  font-weight: bold;
+}
+
 
 footer {
   width: 100%;

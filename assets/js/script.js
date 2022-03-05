@@ -43,11 +43,13 @@ askQuestions = function() {
     for(i=0; i< questions.length; i++){
         const currentQuestion = questions[i];
         console.log("Questions" + currentQuestion.question)
-         //To Do: make questions show up in html
-         let qcontent = document.getElementById('question-content');
-         qcontent.innerHTML=currentQuestion.question;
+         let qContent = document.getElementById('question-content');
+         qContent.innerHTML=currentQuestion.question;
         for(j=0; j< currentQuestion.choices.length; j++) {
             console.log("Choice" + currentQuestion.choices[j]);
+            const elementName = "choice-" + j;
+            let cContent = document.getElementById(elementName);
+            cContent.innerHTML=currentQuestion.choices[j];
              //To Do: make choices show up in html
         }
     }

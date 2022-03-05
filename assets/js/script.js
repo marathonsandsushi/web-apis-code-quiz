@@ -28,7 +28,8 @@ let questions = [
    }
 ]
 
-var startTime = document.getElementById("#startTime");
+// button id is startButton
+var startButton = document.getElementById("#startButton");
 var questionsDiv = document.getElementById("questionsDiv");
 
 // start quiz function 
@@ -52,7 +53,7 @@ askQuestions = function() {
     console.log("TBD 2");
     for(i=0; i< questions.length; i++){
         const currentQuestion = questions[i];
-        console.log("Questions" + currentQuestion.question);
+        console.log("Questions" + currentQuestion.question)
          //To Do: make questions show up in html
         for(j=0; j< currentQuestion.choices.length; j++) {
             console.log("Choice" + currentQuestion.choices[j]);
@@ -62,6 +63,12 @@ askQuestions = function() {
     console.log("-------------------------------------");
 }
 
+// check answers
+/*
+checkAnswer = function() {
+    if(currentQuestion.question)
+};
+*/
 // TODO: create startTimer function
 // TODO: create updateTimer function
 

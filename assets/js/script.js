@@ -136,24 +136,21 @@ showHighscores = function () {
   console.log("highscores from local storage:  " + highScoreString);
   highScores = JSON.parse(highScoreString);
   const tableBodyEl = document.getElementById("playerData");
-  const tableRow = document.createElement("tr");
-
-  const tableDataInitials = document.createElement("td");
-  tableDataInitials.innerHTML = "saf";
-  tableRow.append(tableDataInitials);
-
-  const tableDataScore = document.createElement("td");
-  tableDataScore.innerHTML = "1000000000";
-  tableRow.append(tableDataScore);
 
   for(let highScore of highScores) {
+    const tableRow = document.createElement("tr");
     console.log("player:  " + highScore.initials + "; Score:  " + highScore.score);
+    const tableDataInitials = document.createElement("td");
+    tableDataInitials.innerHTML = highScore.initials;
+    tableRow.append(tableDataInitials);
+  
+    const tableDataScore = document.createElement("td");
+    tableDataScore.innerHTML = highScore.score;
+    tableRow.append(tableDataScore);
+    tableBodyEl.appendChild(tableRow);
   }
-
-  tableBodyEl.appendChild(tableRow);
 };
 
 // TODO make play again mechanisim
-// TODO highscorres page
 
 // Madison Kendall Coding Quiz

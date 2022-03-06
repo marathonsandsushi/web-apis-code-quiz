@@ -113,22 +113,25 @@ endQuiz = function (){
 
      const initialsInput = document.createElement("input");
      initialsInput.setAttribute("type", "text");
-    // initialsInput.setAttribute("value", "Hello World!");
+    initialsInput.setAttribute("id", "initialsInput");
      document.body.appendChild(initialsInput);
 
      const initialsSubmit = document.createElement("button");
      initialsSubmit.onclick = function(){
-         uploadInitials(initialsInput.innerHTML);
+       const initials = initialsInput.value;
+       console.log("Initials " + initials);
+         uploadInitials(initials, secondsRemaining);
       };
      document.body.appendChild(initialsSubmit);
 
 }
 
-    uploadInitials = function(initials) {
-        this.highScores.push({
-            "initials"; initials,
-            "score"; score,
+    uploadInitials = function(initials, score) {
+      highScores.push({
+            "initials": initials,
+            "score": score
         });
+        console.log("new score:  " + JSON.stringify(highScores));
     }
 
 // Madison Kendall Coding Quiz

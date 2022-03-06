@@ -44,7 +44,6 @@ let highScores = [];
 
 // start quiz function
 startQuiz = function () {
-  console.log("I work");
   quizInterval = setInterval(updateTime, 1000);
   askNextQuestion();
 };
@@ -55,7 +54,6 @@ function updateTime() {
         endQuiz();
     }
     secondsRemaining--;
-    console.log("timer is working" + secondsRemaining);
     let timerEl = document.getElementById("timer-value");
     timerEl.innerHTML = "Time remaining:  " + secondsRemaining;
  }
@@ -63,13 +61,10 @@ function updateTime() {
 checkAnswer = function(button) {
     // TODO check current answer
     const clickChoice = button.innerHTML;
-    console.log("clickChoice" + clickChoice);
     const currentQuestion = questions[currentQuestionId];
     const answer = questions[currentQuestionId].answer;
     if(clickChoice === answer) {
-        console.log("correct answer");
     } else {
-        console.log("wrong");
         secondsRemaining -= 10;
         updateTime();
     } 
@@ -83,11 +78,9 @@ checkAnswer = function(button) {
 
 askNextQuestion = function () {
     const currentQuestion = questions[currentQuestionId];
-    console.log("Questions" + currentQuestion.question);
     let qContent = document.getElementById("question-content");
     qContent.innerHTML = currentQuestion.question;
     for (j = 0; j < currentQuestion.choices.length; j++) {
-      console.log("Choice" + currentQuestion.choices[j]);
       const elementName = "choice-" + j;
       let cContent = document.getElementById(elementName);
       cContent.innerHTML = currentQuestion.choices[j];
@@ -96,7 +89,6 @@ askNextQuestion = function () {
 
 endQuiz = function (){
     clearInterval(quizInterval);
-    console.log("TBD");
     questionsDiv.innerHTML = "";
     
      const createH2 = document.createElement("h2");
@@ -119,7 +111,6 @@ endQuiz = function (){
      const initialsSubmit = document.createElement("button");
      initialsSubmit.onclick = function(){
        const initials = initialsInput.value;
-       console.log("Initials " + initials);
          uploadInitials(initials, secondsRemaining);
       };
      document.body.appendChild(initialsSubmit);

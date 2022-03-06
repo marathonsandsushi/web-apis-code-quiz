@@ -42,7 +42,7 @@ let secondsRemaining = 60;
 let quizInterval = null;
 
 let highScores = [];
-if(localStorage.highScores) {
+if (localStorage.highScores) {
   highScores = JSON.parse(localStorage.highScores);
 }
 
@@ -109,9 +109,10 @@ endQuiz = function () {
   const initialsInput = document.createElement("input");
   initialsInput.setAttribute("type", "text");
   initialsInput.setAttribute("id", "initialsInput");
-  document.body.appendChild(initialsInput);
+   document.body.appendChild(initialsInput);
 
   const initialsSubmit = document.createElement("button");
+  initialsSubmit.innerHTML = "Submit";
   initialsSubmit.onclick = function () {
     const initials = initialsInput.value;
     uploadInitials(initials, secondsRemaining);
@@ -134,15 +135,19 @@ showHighscores = function () {
   highScores = JSON.parse(highScoreString);
   const tableBodyEl = document.getElementById("playerData");
 
-  highScores.sort(function(a, b){return b.score - a.score});
+  highScores.sort(function (a, b) {
+    return b.score - a.score;
+  });
 
-  for(let highScore of highScores) {
+  for (let highScore of highScores) {
     const tableRow = document.createElement("tr");
-    console.log("player:  " + highScore.initials + "; Score:  " + highScore.score);
+    console.log(
+      "player:  " + highScore.initials + "; Score:  " + highScore.score
+    );
     const tableDataInitials = document.createElement("td");
     tableDataInitials.innerHTML = highScore.initials;
     tableRow.append(tableDataInitials);
-  
+
     const tableDataScore = document.createElement("td");
     tableDataScore.innerHTML = highScore.score;
     tableRow.append(tableDataScore);

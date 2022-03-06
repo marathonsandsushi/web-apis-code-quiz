@@ -40,6 +40,7 @@ let questions = [
 currentQuestionId = 0;
 let secondsRemaining = 60;
 let quizInterval = null;
+let highScores = [];
 
 // start quiz function
 startQuiz = function () {
@@ -106,42 +107,28 @@ endQuiz = function (){
 
      const scoreText = document.createElement("h2");
      scoreText.setAttribute("id", "scoreText");
-     scoreText.textContent = "Your Score is-";
+     scoreText.textContent = "Your Score is -  " + secondsRemaining;
  
      questionsDiv.appendChild(scoreText);
- 
+
+     const initialsInput = document.createElement("input");
+     initialsInput.setAttribute("type", "text");
+    // initialsInput.setAttribute("value", "Hello World!");
+     document.body.appendChild(initialsInput);
+
+     const initialsSubmit = document.createElement("button");
+     initialsSubmit.onclick = function(){
+         uploadInitials(initialsInput.innerHTML);
+      };
+     document.body.appendChild(initialsSubmit);
+
 }
 
-
-/*
-waitForChoice = function (currentQuestion) {
-  console.log("ITS WORKING" + currentQuestion.question);
-  prompt(currentQuestion.question);
-  while(notAnswered)
-};
-*/
-
-// quiz questions function
-/*
-askQuestions = function () {
-    console.log("TBD 2");
-    for (i = 0; i < questions.length; i++) {
-      const currentQuestion = questions[i];
-      console.log("Questions" + currentQuestion.question);
-      let qContent = document.getElementById("question-content");
-      qContent.innerHTML = currentQuestion.question;
-      for (j = 0; j < currentQuestion.choices.length; j++) {
-        console.log("Choice" + currentQuestion.choices[j]);
-        const elementName = "choice-" + j;
-        let cContent = document.getElementById(elementName);
-        cContent.innerHTML = currentQuestion.choices[j];
-      }
+    uploadInitials = function(initials) {
+        this.highScores.push({
+            "initials"; initials,
+            "score"; score,
+        });
     }
-    console.log("-------------------------------------");
-  };
-*/
-
-// TODO: create startTimer function
-// TODO: create updateTimer function
 
 // Madison Kendall Coding Quiz

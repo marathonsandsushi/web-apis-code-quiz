@@ -38,7 +38,7 @@ let questions = [
 ];
 
 currentQuestionId = 0;
-let secondsRemaining = 60;
+let secondsRemaining = 70;
 let quizInterval = null;
 
 let highScores = [];
@@ -68,7 +68,7 @@ checkAnswer = function (button) {
   const answer = questions[currentQuestionId].answer;
   if (clickChoice === answer) {
   } else {
-    secondsRemaining -= 10;
+    secondsRemaining -= 15;
     updateTime();
   }
   currentQuestionId++;
@@ -102,7 +102,7 @@ endQuiz = function () {
 
   const scoreText = document.createElement("h2");
   scoreText.setAttribute("id", "scoreText");
-  scoreText.textContent = "Your Score is -  " + secondsRemaining;
+  scoreText.textContent = "Your Score is:  " + secondsRemaining;
 
   questionsDiv.appendChild(scoreText);
 
@@ -127,6 +127,7 @@ uploadInitials = function (initials, score) {
   });
   console.log("new score:  " + JSON.stringify(highScores));
   localStorage.highScores = JSON.stringify(highScores);
+  window.location.replace("./highscores.html");
 };
 
 showHighscores = function () {

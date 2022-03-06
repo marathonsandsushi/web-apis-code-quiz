@@ -131,6 +131,7 @@ endQuiz = function () {
 };
 
 uploadInitials = function (initials, score) {
+  score = Math.max(0, score);
   highScores.push({
     initials: initials,
     score: score,

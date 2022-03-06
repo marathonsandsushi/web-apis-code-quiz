@@ -9,7 +9,7 @@
    <link rel="stylesheet" href="./assets/css/style.css" />
  </head>
 
- <body>
+ <body onload="showHighscores()">
       <h1>HIGHSCORES</h1>
       <hr>
       <br>
@@ -19,10 +19,12 @@
           <th>Initials-</th>
           <th>Score-</th>
         </tr>
+        <tbody id="playerData">
         <tr>
           <td>MZK</td>
           <td>100</td>
         </tr>
+      </tbody>
       </table>
       </div>
           <!-- Buttons -->
@@ -31,6 +33,7 @@
           <br>
         </div>
 
+        <p><a id="myAnchor" href="./index.html">Main Page</a></p>
    <!-- start of footer section -->
    <footer>
      <h2>&copy;2022 by Madison Kendall</h2>

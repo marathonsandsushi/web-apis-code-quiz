@@ -125,4 +125,25 @@ endQuiz = function (){
         console.log("new score:  " + JSON.stringify(highScores));
     }
 
+    showHighscores = function() {
+      const tableBodyEl = document.getElementById("playerData");
+      const tableRow = document.createElement("tr");
+     // tableRow.setAttribute("id", "scoreText");
+    //  tableRow.textContent = "Your Score is -  " + secondsRemaining;
+    const tableDataInitials = document.createElement("td");
+    tableDataInitials.innerHTML = "saf";
+    tableRow.append(tableDataInitials);
+
+    const tableDataScore = document.createElement("td");
+    tableDataScore.innerHTML= "1000000000";
+    tableRow.append(tableDataScore);
+
+    tableBodyEl.appendChild(tableRow);
+    }
+
+
+// TODO make play again mechanisim
+// TODO highscorres page
+
+
 // Madison Kendall Coding Quiz

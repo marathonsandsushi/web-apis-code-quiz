@@ -41,7 +41,6 @@ currentQuestionId = 0;
 let secondsRemaining = 60;
 let quizInterval = null;
 
-// TODO restore from local storage
 let highScores = [];
 if(localStorage.highScores) {
   highScores = JSON.parse(localStorage.highScores);
@@ -64,7 +63,6 @@ function updateTime() {
 }
 
 checkAnswer = function (button) {
-  // TODO check current answer
   const clickChoice = button.innerHTML;
   const currentQuestion = questions[currentQuestionId];
   const answer = questions[currentQuestionId].answer;
@@ -131,11 +129,12 @@ uploadInitials = function (initials, score) {
 };
 
 showHighscores = function () {
-  // TODO sort highscores
   const highScoreString = localStorage.highScores;
   console.log("highscores from local storage:  " + highScoreString);
   highScores = JSON.parse(highScoreString);
   const tableBodyEl = document.getElementById("playerData");
+
+  highScores.sort(function(a, b){return b.score - a.score});
 
   for(let highScore of highScores) {
     const tableRow = document.createElement("tr");
@@ -151,6 +150,4 @@ showHighscores = function () {
   }
 };
 
-// TODO make play again mechanisim
-
-// Madison Kendall Coding Quiz
+// Madison Kendall Code Quiz

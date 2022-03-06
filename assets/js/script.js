@@ -92,6 +92,7 @@ askNextQuestion = function () {
 
 endQuiz = function () {
   clearInterval(quizInterval);
+  secondsRemaining = Math.max(0, secondsRemaining);
   questionsDiv.innerHTML = "";
 
   const createH2 = document.createElement("h2");

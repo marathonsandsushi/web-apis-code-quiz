@@ -40,7 +40,12 @@ let questions = [
 currentQuestionId = 0;
 let secondsRemaining = 60;
 let quizInterval = null;
+
+// TODO restore from local storage
 let highScores = [];
+if(localStorage.highScores) {
+  highScores = JSON.parse(localStorage.highScores);
+}
 
 // start quiz function
 startQuiz = function () {
@@ -50,100 +55,105 @@ startQuiz = function () {
 
 // this function will run every second
 function updateTime() {
-    if(secondsRemaining <= 0) {
-        endQuiz();
-    }
-    secondsRemaining--;
-    let timerEl = document.getElementById("timer-value");
-    timerEl.innerHTML = "Time remaining:  " + secondsRemaining;
- }
- 
-checkAnswer = function(button) {
-    // TODO check current answer
-    const clickChoice = button.innerHTML;
-    const currentQuestion = questions[currentQuestionId];
-    const answer = questions[currentQuestionId].answer;
-    if(clickChoice === answer) {
-    } else {
-        secondsRemaining -= 10;
-        updateTime();
-    } 
-    currentQuestionId++;
-    if(currentQuestionId >= questions.length || secondsRemaining <= 0){
-        endQuiz();
-    } else {
-        askNextQuestion();
-    }
+  if (secondsRemaining <= 0) {
+    endQuiz();
+  }
+  secondsRemaining--;
+  let timerEl = document.getElementById("timer-value");
+  timerEl.innerHTML = "Time remaining:  " + secondsRemaining;
 }
+
+checkAnswer = function (button) {
+  // TODO check current answer
+  const clickChoice = button.innerHTML;
+  const currentQuestion = questions[currentQuestionId];
+  const answer = questions[currentQuestionId].answer;
+  if (clickChoice === answer) {
+  } else {
+    secondsRemaining -= 10;
+    updateTime();
+  }
+  currentQuestionId++;
+  if (currentQuestionId >= questions.length || secondsRemaining <= 0) {
+    endQuiz();
+  } else {
+    askNextQuestion();
+  }
+};
 
 askNextQuestion = function () {
-    const currentQuestion = questions[currentQuestionId];
-    let qContent = document.getElementById("question-content");
-    qContent.innerHTML = currentQuestion.question;
-    for (j = 0; j < currentQuestion.choices.length; j++) {
-      const elementName = "choice-" + j;
-      let cContent = document.getElementById(elementName);
-      cContent.innerHTML = currentQuestion.choices[j];
-    }
-}
+  const currentQuestion = questions[currentQuestionId];
+  let qContent = document.getElementById("question-content");
+  qContent.innerHTML = currentQuestion.question;
+  for (j = 0; j < currentQuestion.choices.length; j++) {
+    const elementName = "choice-" + j;
+    let cContent = document.getElementById(elementName);
+    cContent.innerHTML = currentQuestion.choices[j];
+  }
+};
 
-endQuiz = function (){
-    clearInterval(quizInterval);
-    questionsDiv.innerHTML = "";
-    
-     const createH2 = document.createElement("h2");
-     createH2.setAttribute("id", "createH2");
-     createH2.textContent = "All Done!"
- 
-     questionsDiv.appendChild(createH2);
+endQuiz = function () {
+  clearInterval(quizInterval);
+  questionsDiv.innerHTML = "";
 
-     const scoreText = document.createElement("h2");
-     scoreText.setAttribute("id", "scoreText");
-     scoreText.textContent = "Your Score is -  " + secondsRemaining;
- 
-     questionsDiv.appendChild(scoreText);
+  const createH2 = document.createElement("h2");
+  createH2.setAttribute("id", "createH2");
+  createH2.textContent = "All Done!";
 
-     const initialsInput = document.createElement("input");
-     initialsInput.setAttribute("type", "text");
-    initialsInput.setAttribute("id", "initialsInput");
-     document.body.appendChild(initialsInput);
+  questionsDiv.appendChild(createH2);
 
-     const initialsSubmit = document.createElement("button");
-     initialsSubmit.onclick = function(){
-       const initials = initialsInput.value;
-         uploadInitials(initials, secondsRemaining);
-      };
-     document.body.appendChild(initialsSubmit);
+  const scoreText = document.createElement("h2");
+  scoreText.setAttribute("id", "scoreText");
+  scoreText.textContent = "Your Score is -  " + secondsRemaining;
 
-}
+  questionsDiv.appendChild(scoreText);
 
-    uploadInitials = function(initials, score) {
-      highScores.push({
-            "initials": initials,
-            "score": score
-        });
-        console.log("new score:  " + JSON.stringify(highScores));
-    }
+  const initialsInput = document.createElement("input");
+  initialsInput.setAttribute("type", "text");
+  initialsInput.setAttribute("id", "initialsInput");
+  document.body.appendChild(initialsInput);
 
-    showHighscores = function() {
-      const tableBodyEl = document.getElementById("playerData");
-      const tableRow = document.createElement("tr");
-     // tableRow.setAttribute("id", "scoreText");
-    //  tableRow.textContent = "Your Score is -  " + secondsRemaining;
-    const tableDataInitials = document.createElement("td");
-    tableDataInitials.innerHTML = "saf";
-    tableRow.append(tableDataInitials);
+  const initialsSubmit = document.createElement("button");
+  initialsSubmit.onclick = function () {
+    const initials = initialsInput.value;
+    uploadInitials(initials, secondsRemaining);
+  };
+  document.body.appendChild(initialsSubmit);
+};
 
-    const tableDataScore = document.createElement("td");
-    tableDataScore.innerHTML= "1000000000";
-    tableRow.append(tableDataScore);
+uploadInitials = function (initials, score) {
+  highScores.push({
+    initials: initials,
+    score: score,
+  });
+  console.log("new score:  " + JSON.stringify(highScores));
+  localStorage.highScores = JSON.stringify(highScores);
+};
 
-    tableBodyEl.appendChild(tableRow);
-    }
+showHighscores = function () {
+  // TODO sort highscores
+  const highScoreString = localStorage.highScores;
+  console.log("highscores from local storage:  " + highScoreString);
+  highScores = JSON.parse(highScoreString);
+  const tableBodyEl = document.getElementById("playerData");
+  const tableRow = document.createElement("tr");
 
+  const tableDataInitials = document.createElement("td");
+  tableDataInitials.innerHTML = "saf";
+  tableRow.append(tableDataInitials);
+
+  const tableDataScore = document.createElement("td");
+  tableDataScore.innerHTML = "1000000000";
+  tableRow.append(tableDataScore);
+
+  for(let highScore of highScores) {
+    console.log("player:  " + highScore.initials + "; Score:  " + highScore.score);
+  }
+
+  tableBodyEl.appendChild(tableRow);
+};
 
 // TODO make play again mechanisim
 // TODO highscorres page
-
 
 // Madison Kendall Coding Quiz

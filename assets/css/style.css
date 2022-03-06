@@ -60,8 +60,22 @@ text-align: center;
 cursor: pointer;
 }
 
+/* #rules-div-container {
+  width: 100vh;
+
+  outline: dashed 1px red;
+  
+} */
+
 .rules {
   text-align: left;
+  color: black;
+  display: inline-flex;
+  align-items: center;
+  justify-content: left;
+  font-size: 35px;
+  margin: 0;
+  height: 700px;
 }
 
 

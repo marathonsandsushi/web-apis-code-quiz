@@ -107,16 +107,25 @@ endQuiz = function () {
 
   questionsDiv.appendChild(scoreText);
 
+  const createLabel = document.createElement("label");
+  createLabel.textContent =
+    "Enter your initials to add yourself to the highscores list:  ";
+  document.body.appendChild(createLabel);
+
   const initialsInput = document.createElement("input");
   initialsInput.setAttribute("type", "text");
   initialsInput.setAttribute("id", "initialsInput");
-   document.body.appendChild(initialsInput);
+  document.body.appendChild(initialsInput);
 
   const initialsSubmit = document.createElement("button");
-  initialsSubmit.innerHTML = "Submit";
+  initialsSubmit.innerHTML = "Add";
   initialsSubmit.onclick = function () {
     const initials = initialsInput.value;
-    uploadInitials(initials, secondsRemaining);
+    if (initials === "") {
+      alert("Must have initials");
+    } else {
+      uploadInitials(initials, secondsRemaining);
+    }
   };
   document.body.appendChild(initialsSubmit);
 };

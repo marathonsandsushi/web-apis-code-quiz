@@ -5,7 +5,7 @@
  
 }
 
-#quizBtn {
+.redirectBtn {
 text-decoration: none;
 
 }
@@ -65,6 +65,7 @@ cursor: pointer;
 }
 
 
+
 button:hover{
 background-color:#ffa43b;
 color: white;
@@ -81,6 +82,12 @@ a.quizBtn {
 
 #question-title {
   font-size: 40px;
+}
+
+#initialsInput
+{
+    height:40px;
+    font-size:14pt;
 }
 
 

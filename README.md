@@ -8,5 +8,6 @@ A timed coding quiz on javascript fundamentals. It has the capability for users 
 ## Languages Used
 
 ## Live URL
+https://marathonsandsushi.github.io/web-apis-code-quiz/
 
 ## Screenshot

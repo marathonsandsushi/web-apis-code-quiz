@@ -4,10 +4,9 @@
 A timed coding quiz on JavaScript fundamentals. It has the capability for users to save their high scores. While users answer questions against the timer, 15 seconds are deducted for each incorrect answer.
 
 ## What I Learned
-- Access the DOM using methods like addEventListener(), querySelector(), createElement(), setAttribute(), and getAttribute().
+- Access the DOM using methods like querySelector(), createElement(), setAttribute(), and getAttribute(), getAttributeById().
 - Used localStorage to save the highscores.
 - Add interactivity with HTML by adding browser event listeners.
-- Handle events in JavaScript using callback functions.
 - Use the DOM to both read content from the HTML page and create new content to add to or edit on the page.
 - Identify DOM elements using HTML5 data attributes.
 

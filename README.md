@@ -1,7 +1,7 @@
 # web-apis-code-quiz
 
 ## Description
-A timed coding quiz on javascript fundamentals. It has the capability for users to save their high scores. While users answer questions against the timer, 15 seconds are deducted for each incorrect answer.
+A timed coding quiz on JavaScript fundamentals. It has the capability for users to save their high scores. While users answer questions against the timer, 15 seconds are deducted for each incorrect answer.
 
 ## What I Learned
 - Access the DOM using methods like addEventListener(), querySelector(), createElement(), setAttribute(), and getAttribute().
